@@ -17,6 +17,18 @@ updateTime();
 setInterval(updateTime, 1000);
 
 const startTimerBtn = document.getElementById('start-timer-btn');
+
+function verifyBtn() {
+  chrome.storage.local.get(['isRunning'], (result) => {
+    if (result.isRunning === true) {
+      startTimerBtn.textContent = !result.isRunning
+        ? 'Start Timer'
+        : 'Pause Timer';
+    }
+  });
+}
+verifyBtn();
+
 startTimerBtn.addEventListener('click', () => {
   chrome.storage.local.get(['isRunning'], (result) => {
     chrome.storage.local.set(
