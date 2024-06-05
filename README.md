@@ -40,4 +40,4 @@ This Pomodoro extension is an independent project and is not affiliated with, au
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE) - see the LICENSE.md file for details.
+This project is licensed under the [MIT License](LICENSE).
