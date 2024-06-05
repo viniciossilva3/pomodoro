@@ -1,4 +1,8 @@
-# Pomodoro Timer Extension for Chrome
+<h1 align="center">Pomodoro Timer Extension</h1>
+
+<div align="center">
+<img  alt="Pomodoro Timer Extension Image Example" src="https://github.com/viniciossilva3/pomodoro/assets/56976328/7db6eb12-a710-41fd-990e-628363fd1bdb" width="400">
+</div>
 
 ## About
 
