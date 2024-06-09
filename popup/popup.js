@@ -1,14 +1,15 @@
 let tasks = [];
 
 function updateTime() {
-  chrome.storage.local.get(['timer', 'timeOption'], (result) => {
+  chrome.storage.local.get(['timer', 'timeOption'], (res) => {
     const time = document.getElementById('time');
-    const minutes = `${
-      result.timeOption - Math.ceil(result.timer / 60)
-    }`.padStart(2, '0');
+    const minutes = `${res.timeOption - Math.ceil(res.timer / 60)}`.padStart(
+      2,
+      '0'
+    );
     let seconds = '00';
-    if (result.timer % 60 !== 0) {
-      seconds = `${60 - (result.timer % 60)}`.padStart(2, '0');
+    if (res.timer % 60 !== 0) {
+      seconds = `${60 - (res.timer % 60)}`.padStart(2, '0');
     }
     time.textContent = `${minutes}:${seconds}`;
   });
@@ -19,9 +20,9 @@ setInterval(updateTime, 1000);
 const startTimerBtn = document.getElementById('start-timer-btn');
 
 function verifyBtn() {
-  chrome.storage.local.get(['isRunning'], (result) => {
-    if (result.isRunning === true) {
-      startTimerBtn.textContent = !result.isRunning
+  chrome.storage.local.get(['isRunning'], (res) => {
+    if (res.isRunning === true) {
+      startTimerBtn.textContent = !res.isRunning
         ? 'Start Timer'
         : 'Pause Timer';
     }
@@ -30,13 +31,13 @@ function verifyBtn() {
 verifyBtn();
 
 startTimerBtn.addEventListener('click', () => {
-  chrome.storage.local.get(['isRunning'], (result) => {
+  chrome.storage.local.get(['isRunning'], (res) => {
     chrome.storage.local.set(
       {
-        isRunning: !result.isRunning,
+        isRunning: !res.isRunning,
       },
       () => {
-        startTimerBtn.textContent = !result.isRunning
+        startTimerBtn.textContent = !res.isRunning
           ? 'Pause Timer'
           : 'Start Timer';
       }
@@ -60,8 +61,8 @@ resetTimerBtn.addEventListener('click', () => {
 const addTaskBtn = document.getElementById('add-task-btn');
 addTaskBtn.addEventListener('click', () => addTask());
 
-chrome.storage.sync.get(['tasks'], (result) => {
-  tasks = result.tasks ? result.tasks : [''];
+chrome.storage.sync.get(['tasks'], (res) => {
+  tasks = res.tasks ? res.tasks : [''];
   renderTasks();
 });
 

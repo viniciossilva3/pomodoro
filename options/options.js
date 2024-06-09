@@ -15,6 +15,6 @@ saveBtn.addEventListener('click', () => {
   });
 });
 
-chrome.storage.local.get(['timeOption'], (result) => {
-  timeOption.value = result.timeOption;
+chrome.storage.local.get(['timeOption'], (res) => {
+  timeOption.value = res.timeOption;
 });
